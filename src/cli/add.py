@@ -75,9 +75,14 @@ print("Adding face model for the user " + user)
 # Set the default label
 label = "Initial model"
 
+if len(encodings):
+	numberId = encodings[len(encodings)-1]["id"] + 1
+else:
+	numberId = 0
+		
 # If models already exist, set that default label
 if encodings:
-	label = "Model #" + str(len(encodings) + 1)
+	label = "Model #" + str(numberId)
 
 # Keep de default name if we can't ask questions
 if builtins.howdy_args.y:
@@ -89,11 +94,7 @@ else:
 	# Set the custom label (if any) and limit it to 24 characters
 	if label_in != "":
 		label = label_in[:24]
-if len(encodings):
-	numberId = encodings[len(encodings)-1]["id"] + 1
-else:
-	numberId = 0
-		
+
 # Prepare the metadata for insertion
 insert_model = {
 	"time": int(time.time()),
