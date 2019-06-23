@@ -89,12 +89,16 @@ else:
 	# Set the custom label (if any) and limit it to 24 characters
 	if label_in != "":
 		label = label_in[:24]
-
+if len(encodings):
+	numberId = encodings[len(encodings)-1]["id"] + 1
+else:
+	numberId = 0
+		
 # Prepare the metadata for insertion
 insert_model = {
 	"time": int(time.time()),
 	"label": label,
-	"id": len(encodings),
+	"id": numberId,
 	"data": []
 }
 
