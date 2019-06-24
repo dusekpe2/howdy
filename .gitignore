@@ -100,8 +100,6 @@ ENV/
 # mypy
 .mypy_cache/
 
-# generated models
-src/models/*
 
 # build files
 debian/howdy.substvars
